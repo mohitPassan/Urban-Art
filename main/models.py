@@ -25,6 +25,7 @@ class Painting(models.Model):
     medium = models.CharField(max_length = 256)
     style = models.CharField(max_length = 256)
     size = models.CharField(max_length = 256)
+    photo = models.URLField(null = True, blank = True)
 
     def __str__(self):
         return self.name

@@ -1,9 +1,9 @@
-{% extends 'main/base.html' %}
+{% extends 'main/layouts/base.html' %}
 
 {% load static %}
 
 {% block content %}
-    <div id="indexBG">
-        <h1>Urban Art</h1>
-    </div>
+    {% for painting in painting_list %}
+        <h1>{{ painting.name }}</h1>
+    {% endfor %}
 {% endblock %}
