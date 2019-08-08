@@ -5,11 +5,6 @@ from django.contrib.auth.views import LoginView
 
 from main import models
 
-class HomePage(TemplateView, LoginView):
-    template_name = 'main/HomePage.html'
-    redirect_authenticated_user = True
-    success_url = '/'
-
 class Index(ListView):
     model = models.Painting
     template_name = 'main/index.html'

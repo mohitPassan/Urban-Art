@@ -1,0 +1,68 @@
+{% extends 'auth/layouts/base.html' %}
+
+{% block content %}
+<div class="card mt-5" id="artistSignUpForm">
+    <div class="card-header">Enter your details</div>
+    <div class="card-body">
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="firstName">First Name</label>
+                    <input name="first_name" type="text" class="form-control" id="firstName" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lastName">Last Name</label>
+                    <input name="last_name" type="text" class="form-control" id="lastName" placeholder="Last Name">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="username">Username</label>
+                    <input name="username" type="text" class="form-control" id="username" placeholder="Username">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail">E-Mail</label>
+                    <input name="email" type="email" class="form-control" id="inputEmail" placeholder="E-mail">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputPassword">Password</label>
+                    <input name="password" type="password" class="form-control" id="inputPassword"
+                        placeholder="Password">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputContact">Contact</label>
+                    <input name="contact" type="text" class="form-control" id="inputContact" placeholder="Phone number">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="workEx">Work Experience</label>
+                    <input name="workEx" type="ptext" class="form-control" id="workEx"
+                        placeholder="Work Experience">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="style">Style</label>
+                    <input name="style" type="text" class="form-control" id="style" placeholder="Style">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="medium">Medium</label>
+                    <input name="medium" type="text" class="form-control" id="medium"
+                        placeholder="Medium">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Address</label>
+                <input name="address" type="text" class="form-control" id="inputAddress" placeholder="Address">
+            </div>
+            <div class="row justify-content-center">
+                <button type="submit" class="btn btn-outline-danger">Sign Up</button>
+            </div>
+        </form>
+        <!-- {{ form }} -->
+    </div>
+</div>
+{% endblock %}

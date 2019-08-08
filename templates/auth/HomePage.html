@@ -1,4 +1,4 @@
-{% extends 'main/layouts/base.html' %}
+{% extends 'auth/layouts/base.html' %}
 
 {% block content %}
 
@@ -53,7 +53,7 @@
                     <hr>
                     <p class="card-text" style="font-size: 1.25rem">Join Urban Art as an artist and make our
                         community grow.</p>
-                    <a href="#" class="btn btn-outline-danger mt-5" style="font-size: 1.15rem">Sign Up</a>
+                    <a href="{% url 'aSignUp' %}" class="btn btn-outline-danger mt-5" style="font-size: 1.15rem">Sign Up</a>
                 </div>
             </div>
         </div>
@@ -64,7 +64,7 @@
                     <hr>
                     <p class="card-text" style="font-size: 1.25rem">Buy paintings from artists from all around the
                         world.</p>
-                    <a href="#" class="btn btn-outline-danger mt-5" style="font-size: 1.15rem">Sign Up</a>
+                    <a href="{% url 'uSignUp' %}" class="btn btn-outline-danger mt-5" style="font-size: 1.15rem">Sign Up</a>
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@
 
 
     <div id="guest">
-        <a href="#" class="btn btn-outline-light">
+        <a href="{% url 'paintings' %}" class="btn btn-outline-light">
             <h5 style="display: inline" class="mr-2">Skip Login</h5>
             <i class="fas fa-chevron-down"></i>
         </a>

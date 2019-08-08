@@ -3,7 +3,13 @@
 {% load static %}
 
 {% block content %}
-    {% for painting in painting_list %}
-        <h1>{{ painting.name }}</h1>
-    {% endfor %}
+
+    <div style="width:100%">
+        {% for painting in painting_list %}
+            <div style="float:left; width:50%; height:100px;">
+                <img src="{{ painting.photo }}" alt="">
+            </div>
+        {% endfor%}
+    </div>
+
 {% endblock %}
