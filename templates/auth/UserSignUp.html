@@ -2,9 +2,9 @@
 
 {% block content %}
 <div class="card mt-5" id="userSignUpForm">
-    <div class="card-header">Enter your details</div>
+    
+    <div class="card-header"><a href="/" id="arrow"><i class="fas fa-arrow-left"></i></a><span style="padding: 20px">Sign Up as a Collector</span></div>
     <div class="card-body">
-
         <form method="POST">
             {% csrf_token %}
             <div class="form-row">

@@ -28,8 +28,8 @@ class ArtistSignUp(CreateView):
         artistStyle = self.request.GET.get('style')
         artistMedium = self.request.GET.get('medium')
         
-        userArtist = form.save(commit = False)
-        userArtist.artist.workEx = artistWorkEx
+        userArtist = form.save()
+        userArtist.foreignkeytoartist.workEx = artistWorkEx
         userArtist.artist.style = artistStyle
         userArtist.artist.medium = artistMedium
 
