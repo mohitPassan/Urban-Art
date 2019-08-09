@@ -73,7 +73,13 @@
 
     <div id="guest">
         <a href="{% url 'paintings' %}" class="btn btn-outline-light">
-            <h5 style="display: inline" class="mr-2">Skip Login</h5>
+            <h5 style="display: inline" class="mr-2">
+                {% if request.user.is_authenticated %}
+                    View Paintings
+                {% else %}
+                    Skip Login
+                {% endif %}
+                </h5>
             <i class="fas fa-chevron-down"></i>
         </a>
     </div>

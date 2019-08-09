@@ -4,11 +4,9 @@
 
 {% block content %}
 
-    <div style="width:100%">
+    <div class="card-columns">
         {% for painting in painting_list %}
-            <div style="float:left; width:50%; height:100px;">
-                <img src="{{ painting.photo }}" alt="">
-            </div>
+            {% include 'main/components/painting-card.html' %}
         {% endfor%}
     </div>
 
