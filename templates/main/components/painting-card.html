@@ -1,3 +1,12 @@
-<div class="card rounded-0" id="painting">
+<div class="card rounded-0 painting">
     <img src="{{ painting.photo }}" class="card-img-top" alt="...">
+    <div class="content">
+        <div class="display-4">{{ painting.name }}</div >
+        <h5>Artist: {{ painting.artist.profile.username }}</h5>
+        <h5>Style: {{ painting.style }}</h5>
+        <h5>Medium: {{ painting.medium }}</h5>
+        <h5>Size: {{ painting.size }}</h5>
+        <h5>Price: Rs. {{ painting.price }}</h5>
+    </div>
+    
 </div>

@@ -13,7 +13,7 @@ from main import models
 
 class Login(TemplateView, LoginView):
     template_name = 'auth/HomePage.html'
-    # redirect_authenticated_user = True
+    redirect_authenticated_user = True
 
 class ArtistSignUp(TemplateView):
     template_name = 'auth/ArtistSignUp.html'
