@@ -1,0 +1,15 @@
+<div class="card rounded-0 painting">
+    <img src="{{ artist.photo }}" class="card-img-top" alt="...">
+    <div class="content">
+        <div class="display-4">{{ artist.profile.first_name }} {{ artist.profile.last_name }}</div>
+        <h5>Style: {{ artist.style }}</h5>
+        <h5>Medium: {{ artist.medium }}</h5>
+    </div>
+    <div class="profile-button">
+        <a href="{% url 'view-profile' artist.profile.id %}">
+            <button class="btn btn-outline-light">
+                View Profile
+            </button>
+        </a>
+    </div>
+</div>

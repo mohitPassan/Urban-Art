@@ -1,2 +1,21 @@
 {% extends 'main/layouts/base.html' %}
 
+{% load static %}
+
+{% block content %}
+<div>
+    <h3>{{ profile.first_name }}</h3>
+    <h3>{{ profile.last_name }}</h3>
+    <h3>{{ profile.contact }}</h3>
+    <h3>{{ profile.email }}</h3>
+    <h3>{{ profile.artist.medium }}</h3>
+    <h3>{{ profile.artist.style }}</h3>
+    <h3>{{ profile.artist.workEx }}</h3>
+    <h3><img src="{{ profile.artist.photo }}" alt=""></h3>
+
+        {% for painting in profile.artist.painting_set.all %}
+            <img src="{{ painting.photo }}" class="card-img-top">
+        {% endfor%}
+    </div>
+</div>
+{% endblock %}

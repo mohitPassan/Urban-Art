@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="{% static '/main/CSS/style.css' %}">
+        <link rel="stylesheet" href="{% static '/main/CSS/style.css' %}">
 
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css?family=Red+Hat+Display&display=swap" rel="stylesheet">
@@ -57,8 +57,8 @@
                         <div class="dropdown-menu dropdown-menu-right">
                             {% if request.user.artist is NULL  %}
                                 <a class="dropdown-item" href="#">Cart</a>
-                                <a class="dropdown-item" href="{% url 'view-profile' user.id%}">Profile</a>
-                                <a class="dropdown-item" href="#">My paintings</a>
+                                <a class="dropdown-item" href="{% url 'view-profile' request.user.id %}">Profile</a>
+                                <!-- <a class="dropdown-item" href="#">My paintings</a> -->
                             {% else %}
                                 <a class="dropdown-item" href="#">Cart</a>
                             {% endif %}

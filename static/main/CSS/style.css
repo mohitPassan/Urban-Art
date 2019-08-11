@@ -1,6 +1,8 @@
 body {
     height: 100%;
     font-family: 'Red Hat Display', sans-serif;
+    background-color: rgb(221, 221, 221) ;
+    background-repeat: no-repeat;
 }
 
 .navbar {
@@ -35,7 +37,7 @@ body {
 }
 
 .painting:hover .content {
-    top: 25%;
+    top: 35%;
     opacity: 1;
 }
 
@@ -52,4 +54,19 @@ body {
 .card-columns {
     column-count: 4;
     column-gap: 50px;
+}
+
+.profile-button {
+    position: absolute;
+    top: 5%;
+    left: 100%;
+    opacity: 0;
+    width: 150px;
+    transition: all 0.5s ease-in-out;
+}
+
+.painting:hover .profile-button {
+    left: calc(100% - 120px);
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
 }

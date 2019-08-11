@@ -12,3 +12,7 @@ class Index(ListView):
 class Profile(DetailView):
     model = models.Profile
     template_name = 'main/user-profile.html'
+
+class Artists(ListView):
+    model = models.Artist
+    template_name = 'main/artists.html'
