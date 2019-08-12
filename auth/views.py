@@ -40,7 +40,7 @@ class ArtistSignUp(TemplateView):
             userObject.artist =  artistObject
             userObject.save()
 
-            return HttpResponseRedirect('/paintings')
+            return HttpResponseRedirect('/index')
         else:
             userCreationForm = userForm()
             artistCreationForm = artistForm()
@@ -52,22 +52,28 @@ class ArtistSignUp(TemplateView):
 
             return render(request, self.template_name, forms)
 
-class UserSignUp(CreateView):
-    model = models.Profile
+class UserSignUp(TemplateView):
     template_name = 'auth/UserSignUp.html'
-    fields = [  
-        'first_name',
-        'last_name',
-        'username',
-        'password',
-        'email',
-        'contact',
-        'address'
-    ]
 
-    def form_valid(request, form):
-        newUser = form.save(commit = False)
-        newUser.is_staff = True
-        newUser.save()
-        return HttpResponseRedirect('/paintings')
+    def get(self, request):
+        userCreationForm = userForm()
+
+        form = {
+            'userForm': userCreationForm
+        }
+
+        return render(request, self.template_name, form)
+
+    def post(self, request):
+        user = userForm(request.POST)
+
+        if user.is_valid:
+            user.save()
+            return HttpResponseRedirect('/index')
+        else:
+            userCreationForm = userForm()
+            form = {
+                'userForm': userCreationForm
+            }
+            return render(request, self.template_name, form)
 

@@ -4,18 +4,19 @@
 
 {% block content %}
 <div>
-    <h3>{{ profile.first_name }}</h3>
-    <h3>{{ profile.last_name }}</h3>
-    <h3>{{ profile.contact }}</h3>
-    <h3>{{ profile.email }}</h3>
-    <h3>{{ profile.artist.medium }}</h3>
-    <h3>{{ profile.artist.style }}</h3>
-    <h3>{{ profile.artist.workEx }}</h3>
-    <h3><img src="{{ profile.artist.photo }}" alt=""></h3>
-
-        {% for painting in profile.artist.painting_set.all %}
+    <h3>{{ artist.id }}</h3>
+    <h3>{{ artist.profile.first_name }}</h3>
+    <h3>{{ artist.profile.last_name }}</h3>
+    <h3>{{ artist.profile.contact }}</h3>
+    <h3>{{ artist.profile.email }}</h3>
+    <h3>{{ artist.medium }}</h3>
+    <h3>{{ artist.style }}</h3>
+    <h3>{{ artist.workEx }}</h3>
+    <a href="{% url 'add-painting' artist.id %}"><h3>ADD PAINTING</h3></a>
+    <h3><img src="{{ artist.photo }}" alt=""></h3>
+        {% for painting in artist.painting_set.all %}
             <img src="{{ painting.photo }}" class="card-img-top">
-        {% endfor%}
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
