@@ -41,3 +41,7 @@ class AddPainting(CreateView):
         newPainting.save()
 
         return HttpResponseRedirect(self.get_success_url())
+
+class Painting(DetailView):
+    model = models.Painting
+    template_name = 'main/painting.html'

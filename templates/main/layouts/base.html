@@ -57,7 +57,7 @@
                         <div class="dropdown-menu dropdown-menu-right">
                             {% if request.user.artist is NULL  %}
                                 <a class="dropdown-item" href="#">Cart</a>
-                                <a class="dropdown-item" href="{% url 'view-profile' request.user.id %}">Profile</a>
+                                <a class="dropdown-item" href="{% url 'view-profile' user.id %}">Profile</a>
                                 <!-- <a class="dropdown-item" href="#">My paintings</a> -->
                             {% else %}
                                 <a class="dropdown-item" href="#">Cart</a>

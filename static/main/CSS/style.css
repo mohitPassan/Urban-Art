@@ -70,3 +70,19 @@ body {
     opacity: 1;
     transition: all 0.5s ease-in-out;
 }
+
+/*
+.action-button {
+    position: relative;
+    top: 5%;
+    left: 100%;
+    opacity: 0;
+    width: 150px;
+    transition: all 0.5s ease-in-out;
+}
+
+.painting:hover .action-button {
+    left: calc(100% - 80px);
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+} */
