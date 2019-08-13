@@ -3,7 +3,11 @@ from main import models
 from django.contrib.auth.forms import UserCreationForm
 
 class userForm(UserCreationForm):
-    email = forms.EmailField(required = True)
+    email = forms.EmailField(required = True, widget = forms.TextInput(
+        attrs = {
+            'class': 'form-control'
+        }
+    ))
     first_name = forms.CharField(max_length = 256)
     last_name = forms.CharField(max_length = 256)
 
