@@ -6,4 +6,15 @@
     <h2>{{ painting.style }}</h2>
     <h2>{{ painting.medium }}</h2>
     <h2>{{ painting.price }}</h2>
+    {% if painting.soldStatus is True  %}
+    <button class="btn btn-dark disabled">
+        Sold
+    </button>
+    {% else %}
+    <a href="{% url 'buy-painting' user.id painting.artist.id painting.id %}">
+        <button class="btn btn-outline-light">
+            Buy
+        </button>
+    </a>
+    {% endif %}
 {% endblock %}

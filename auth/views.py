@@ -33,14 +33,17 @@ class ArtistSignUp(TemplateView):
         user = userForm(request.POST)
         artist = artistForm(request.POST)
 
-        if user.is_valid and artist.is_valid():
+        if user.is_valid() and artist.is_valid():
             artistObject = artist.save(commit = False)
             userObject = user.save(commit = False)
             artistObject.save()
             userObject.artist =  artistObject
             userObject.save()
 
-            return HttpResponseRedirect('/index')
+            userObject = authenticate(username=user.cleaned_data['username'], password=user.cleaned_data['password1'])
+            login(request, userObject)
+
+            return HttpResponseRedirect('/')
         else:
             userCreationForm = userForm()
             artistCreationForm = artistForm()
@@ -67,9 +70,11 @@ class UserSignUp(TemplateView):
     def post(self, request):
         user = userForm(request.POST)
 
-        if user.is_valid:
+        if user.is_valid():
             user.save()
-            return HttpResponseRedirect('/index')
+            user = authenticate(username=user.cleaned_data['username'], password=user.cleaned_data['password1'])
+            login(request, user)
+            return HttpResponseRedirect('/')
         else:
             userCreationForm = userForm()
             form = {

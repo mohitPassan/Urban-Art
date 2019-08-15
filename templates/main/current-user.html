@@ -13,7 +13,8 @@
     <h3>{{ artist.style }}</h3>
     <h3>{{ artist.workEx }}</h3>
 
-    <a href="{% url 'add-painting' artist.id %}"><h3>ADD PAINTING</h3></a>
+    <h3>{{ artist.username }}</h3>
+
     <h3><img src="{{ artist.photo }}" alt=""></h3>
         {% for painting in artist.painting_set.all %}
             <img src="{{ painting.photo }}" class="card-img-top">

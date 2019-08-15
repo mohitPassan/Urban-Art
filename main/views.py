@@ -80,7 +80,10 @@ class Success(TemplateView):
     template_name = 'main/success.html'
 
 def CurrentProfile(request):
-    user = models.Artist.objects.get(profile = request.user)
+    try:
+        user = models.Artist.objects.get(profile = request.user)
+    except:
+        user = models.Profile.objects.get(id = request.user.id)
 
     Context = {
         'artist': user
