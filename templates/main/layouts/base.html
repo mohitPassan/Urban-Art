@@ -48,6 +48,11 @@
                     <a class="nav-link" href="#">Artists<span class="sr-only">(current)</span></a>
                 </li>
             </ul> -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'artists' %}">Artists<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     {% if request.user.is_authenticated  %}
@@ -56,7 +61,6 @@
                             Welcome, {{ request.user.first_name }}
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Cart</a>
                             <a class="dropdown-item" href="{% url 'current-profile' %}">Profile</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>

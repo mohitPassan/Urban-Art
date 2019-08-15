@@ -12,9 +12,9 @@ class Index(ListView, LoginView):
     model = models.Painting
     template_name = 'main/index.html'
 
-class Profile(DetailView):
+class ArtistProfile(DetailView):
     model = models.Artist
-    template_name = 'main/user-profile.html'
+    template_name = 'main/artist-profile.html'
 
 class Artists(ListView):
     model = models.Artist
@@ -86,7 +86,8 @@ def CurrentProfile(request):
         user = models.Profile.objects.get(id = request.user.id)
 
     Context = {
-        'artist': user
+        'user': user,
+        'orders': models.Payment.objects.filter(user = request.user)
     }
 
     return render(request, 'main/current-user.html', Context)

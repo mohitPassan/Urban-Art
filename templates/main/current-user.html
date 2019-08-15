@@ -4,21 +4,36 @@
 
 {% block content %}
 <div>
-    <h3>{{ artist.id }}</h3>
-    <h3>{{ artist.profile.first_name }}</h3>
-    <h3>{{ artist.profile.last_name }}</h3>
-    <h3>{{ artist.profile.contact }}</h3>
-    <h3>{{ artist.profile.email }}</h3>
-    <h3>{{ artist.medium }}</h3>
-    <h3>{{ artist.style }}</h3>
-    <h3>{{ artist.workEx }}</h3>
-
-    <h3>{{ artist.username }}</h3>
-
-    <h3><img src="{{ artist.photo }}" alt=""></h3>
+    {% if user.photo is None  %}
+        <h3>{{ user.id }}</h3>
+        <h3>{{ user.first_name }}</h3>
+        <h3>{{ user.last_name }}</h3>
+        <h3>{{ user.contact }}</h3>
+        <h3>{{ user.email }}</h3>
+        <h3>{{ user.username }}</h3>
+        <h1>User</h1>
+    {% else %}
+        <h3>{{ artist.id }}</h3>
+        <h3>{{ artist.profile.first_name }}</h3>
+        <h3>{{ artist.profile.last_name }}</h3>
+        <h3>{{ artist.profile.contact }}</h3>
+        <h3>{{ artist.profile.email }}</h3>
+        <h3>{{ artist.medium }}</h3>
+        <h3>{{ artist.style }}</h3>
+        <h3>{{ artist.workEx }}</h3>
+        
+        <h3>{{ artist.username }}</h3>
+        
+        <h3><img src="{{ artist.photo }}" alt=""></h3>
         {% for painting in artist.painting_set.all %}
             <img src="{{ painting.photo }}" class="card-img-top">
         {% endfor %}
-    </div>
+
+        <h1>Artist</h1>
+    {% endif %}
+
+    {% for order in orders %}
+        <img src="{{ order.painting.photo }}" alt="">
+    {% endfor %}
 </div>
 {% endblock %}
