@@ -33,7 +33,7 @@ class AddPainting(CreateView):
     template_name = 'main/add-painting.html'
 
     def get_success_url(self):
-        return '/index/profile/{}'.format(self.kwargs['artist_id'])
+        return '/index/current-user'
 
     def form_valid(self, form):
         artist = models.Artist.objects.get(id = self.kwargs['artist_id'])
