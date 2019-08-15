@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 
 from main import models
 
-class Index(ListView, LoginView):
+class Index(ListView):
     model = models.Painting
     template_name = 'main/index.html'
 
@@ -85,10 +85,15 @@ def CurrentProfile(request):
     except:
         user = models.Profile.objects.get(id = request.user.id)
 
+    try:
+        buyers = models.Payment.objects.filter(artist = models.Artist.objects.get(profile = request.user))
+    except:
+        buyers = None
+
     Context = {
         'user': user,
         'orders': models.Payment.objects.filter(user = request.user),
-        'buyers': models.Payment.objects.filter(artist = models.Artist.objects.get(profile = request.user))
+        'buyers': buyers
     }
 
     return render(request, 'main/current-user.html', Context)

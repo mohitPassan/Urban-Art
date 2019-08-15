@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponseRedirect
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView
 from django.contrib.auth.views import (
     LoginView, 
     LogoutView as Logout
@@ -11,7 +11,7 @@ from main import models
 
 # Create your views here.
 
-class Login(TemplateView, LoginView):
+class Login(LoginView):
     template_name = 'auth/HomePage.html'
     redirect_authenticated_user = True
 
@@ -31,7 +31,7 @@ class ArtistSignUp(TemplateView):
 
     def post(self, request):
         user = userForm(request.POST)
-        artist = artistForm(request.POST)
+        artist = artistForm(request.POST, request.FILES)
 
         if user.is_valid() and artist.is_valid():
             artistObject = artist.save(commit = False)

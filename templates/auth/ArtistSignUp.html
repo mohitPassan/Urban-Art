@@ -62,7 +62,7 @@
                 <button type="submit" class="btn btn-outline-danger">Sign Up</button>
             </div>
         </form> -->
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ userForm }}
             {{ artistForm }}
@@ -70,7 +70,6 @@
                 <button type="submit" class="btn btn-outline-danger">Sign Up</button>
             </div>
         </form>
-        {{ name }}
     </div>
 </div>
 {% endblock %}
