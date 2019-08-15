@@ -25,21 +25,21 @@
         
         <h3>{{ user.username }}</h3>
         
-        <h3><img src="{{ user.photo }}" alt=""></h3>
+        <h3><img src="{{ user.photo.url }}" alt=""></h3>
         {% for painting in user.painting_set.all %}
-            <img src="{{ painting.photo }}" class="card-img-top">
+            <img src="{{ painting.photo.url }}" class="card-img-top">
         {% endfor %}
 
         {% for buyer in buyers %}
         <h2>{{ buyer.user.username }}</h2>
-            <img src="{{ buyer.painting.photo }}" alt="">
+            <img src="{{ buyer.painting.photo.url }}" alt="">
         {% endfor %}
         
         <h1>Artist</h1>
     {% endif %}
 
     {% for order in orders %}
-        <img src="{{ order.painting.photo }}" alt="">
+        <img src="{{ order.painting.photo.url }}" alt="">
     {% endfor %}
 
 

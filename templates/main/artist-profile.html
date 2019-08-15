@@ -13,9 +13,9 @@
     <h3>{{ artist.style }}</h3>
     <h3>{{ artist.workEx }}</h3>
     
-    <h3><img src="{{ artist.photo }}" alt=""></h3>
+    <h3><img src="{{ artist.photo.url }}" alt=""></h3>
         {% for painting in artist.painting_set.all %}
-            <img src="{{ painting.photo }}" class="card-img-top">
+            <img src="{{ painting.photo.url }}" class="card-img-top">
         {% endfor %}
     </div>
 </div>

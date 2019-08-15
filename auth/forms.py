@@ -40,5 +40,6 @@ class artistForm(forms.ModelForm):
         fields = [
             'workEx',
             'style',
-            'medium'
+            'medium',
+            'photo'
         ]

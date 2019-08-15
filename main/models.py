@@ -7,7 +7,7 @@ class Artist(models.Model):
     workEx = models.PositiveIntegerField()
     style = models.CharField(max_length = 256)
     medium = models.CharField(max_length = 256)
-    photo = models.URLField(null = True, blank = True)
+    photo = models.ImageField(upload_to = 'profile_image', blank = True, null = True)
     # ToDo: description in markdown
 
     def __str__(self):
@@ -25,7 +25,7 @@ class Painting(models.Model):
     medium = models.CharField(max_length = 256)
     style = models.CharField(max_length = 256)
     size = models.CharField(max_length = 256)
-    photo = models.URLField(null = True, blank = True)
+    photo = models.ImageField(upload_to = 'painting_image', blank = True, null = True)
     soldStatus = models.BooleanField(default = False)
 
     def __str__(self):

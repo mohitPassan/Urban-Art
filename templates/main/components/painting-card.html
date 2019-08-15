@@ -1,5 +1,5 @@
 <div class="card rounded-0 painting">
-    <a href="{% url 'view-painting' painting.id %}"><img src="{{ painting.photo }}" class="card-img-top" alt="..."></a>
+    <a href="{% url 'view-painting' painting.id %}"><img src="{{ painting.photo.url }}" class="card-img-top" alt="..."></a>
     <div class="content">
         <div class="display-4">{{ painting.name }}</div>
         <a href="{% url 'view-profile' painting.artist.id %}">

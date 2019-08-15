@@ -1,7 +1,7 @@
 {% extends 'main/layouts/base.html' %}
 
 {% block content %}
-    <img src="{{ painting.photo }}" alt="">
+    <img src="{{ painting.photo.url }}" alt="">
     <h2>{{ painting.size }}</h2>
     <h2>{{ painting.style }}</h2>
     <h2>{{ painting.medium }}</h2>
