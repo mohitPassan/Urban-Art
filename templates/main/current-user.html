@@ -26,6 +26,9 @@
         <h3>{{ user.username }}</h3>
         
         <h3><img src="{{ user.photo.url }}" alt=""></h3>
+        <a href = "{% url 'change-picture' user.id %}">
+            <button>Edit</button>
+        </a>
         {% for painting in user.painting_set.all %}
             <img src="{{ painting.photo.url }}" class="card-img-top">
         {% endfor %}
@@ -36,12 +39,19 @@
         {% endfor %}
         
         <h1>Artist</h1>
-    {% endif %}
-
-    {% for order in orders %}
+        {% endif %}
+        
+        {% for order in orders %}
+        {{user.id}}
+        {{user.profile.id}}
         <img src="{{ order.painting.photo.url }}" alt="">
-    {% endfor %}
-
+        {% endfor %}
+        <a href="{% url 'delete-account' user.id  %}">
+            <button>
+                Delete Account
+            </button>
+        </a>
+    
 
 </div>
 {% endblock %}

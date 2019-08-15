@@ -11,5 +11,6 @@ urlpatterns = [
     path('artists/<int:artist_id>/add-painting', views.AddPainting.as_view(), name = 'add-painting'),
     path('buy-painting/<int:user_id>/<int:artist_id>/<int:painting_id>/', views.Payment.as_view(), name = 'buy-painting'),
     path('thankyou/', views.Success.as_view()),
-    path('current-user/', views.CurrentProfile, name = 'current-profile')
+    path('current-user/', views.CurrentProfile, name = 'current-profile'),
+    path('current-user/change-profile-picture/<int:pk>/', views.ChangeProfilePicture.as_view(), name = 'change-picture')
 ]

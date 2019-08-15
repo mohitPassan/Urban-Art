@@ -10,4 +10,14 @@
         {% endfor%}
     </div>
 
+    {% for artist in artists %}
+        {% if artist.profile.id == request.user.id %}
+            <a href="{% url 'add-painting' artist.id %}">
+                <button>
+                    Add Your Own
+                </button>
+            </a>
+        {% endif %}
+    {% endfor %}
+
 {% endblock %}

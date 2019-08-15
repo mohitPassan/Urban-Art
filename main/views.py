@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, ListView, DetailView, CreateView
+from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView
 from django.contrib.auth.views import LoginView
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
@@ -9,8 +9,27 @@ from django.contrib.auth.models import User
 from main import models
 
 class Index(ListView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        allArtists = models.Artist.objects.all()
+        context['artists'] = allArtists
+        return context
+
     model = models.Painting
     template_name = 'main/index.html'
+
+class ChangeProfilePicture(UpdateView):
+    model = models.Artist
+    fields = ['photo']
+    template_name = 'main/change-profile.html'
+    
+    def get_success_url(self):
+        return '/index/current-user/'
+
+    def form_valid(self, form):
+        form.save()
+
+        return HttpResponseRedirect(self.get_success_url())
 
 class ArtistProfile(DetailView):
     model = models.Artist

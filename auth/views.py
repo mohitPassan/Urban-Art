@@ -1,10 +1,11 @@
 from django.shortcuts import render, HttpResponseRedirect
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DeleteView
 from django.contrib.auth.views import (
     LoginView, 
     LogoutView as Logout
 )
 from django.contrib.auth import login, authenticate
+from django.urls import reverse_lazy
 
 from auth.forms import artistForm, userForm
 from main import models
@@ -36,6 +37,10 @@ class ArtistSignUp(TemplateView):
         if user.is_valid() and artist.is_valid():
             artistObject = artist.save(commit = False)
             userObject = user.save(commit = False)
+
+            if not artistObject.photo:
+                artistObject.photo = 'profile_image/default-user-icon-28.jpg'
+            
             artistObject.save()
             userObject.artist =  artistObject
             userObject.save()
@@ -81,4 +86,9 @@ class UserSignUp(TemplateView):
                 'userForm': userCreationForm
             }
             return render(request, self.template_name, form)
+
+class DeleteAccount(DeleteView):
+    model = models.Profile
+    template_name = 'auth/delete-account.html'
+    success_url = reverse_lazy('home-page')
 
