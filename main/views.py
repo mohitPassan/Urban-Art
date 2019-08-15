@@ -87,7 +87,8 @@ def CurrentProfile(request):
 
     Context = {
         'user': user,
-        'orders': models.Payment.objects.filter(user = request.user)
+        'orders': models.Payment.objects.filter(user = request.user),
+        'buyers': models.Payment.objects.filter(artist = models.Artist.objects.get(profile = request.user))
     }
 
     return render(request, 'main/current-user.html', Context)

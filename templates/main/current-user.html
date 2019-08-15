@@ -13,27 +13,33 @@
         <h3>{{ user.username }}</h3>
         <h1>User</h1>
     {% else %}
-        <h3>{{ artist.id }}</h3>
-        <h3>{{ artist.profile.first_name }}</h3>
-        <h3>{{ artist.profile.last_name }}</h3>
-        <h3>{{ artist.profile.contact }}</h3>
-        <h3>{{ artist.profile.email }}</h3>
-        <h3>{{ artist.medium }}</h3>
-        <h3>{{ artist.style }}</h3>
-        <h3>{{ artist.workEx }}</h3>
+        <h3>{{ user.id }}</h3>
+        <h3>{{ user.profile.first_name }}</h3>
+        <h3>{{ user.profile.last_name }}</h3>
+        <h3>{{ user.profile.contact }}</h3>
+        <h3>{{ user.profile.email }}</h3>
+        <h3>{{ user.medium }}</h3>
+        <h3>{{ user.style }}</h3>
+        <h3>{{ user.workEx }}</h3>
         
-        <h3>{{ artist.username }}</h3>
+        <h3>{{ user.username }}</h3>
         
-        <h3><img src="{{ artist.photo }}" alt=""></h3>
-        {% for painting in artist.painting_set.all %}
+        <h3><img src="{{ user.photo }}" alt=""></h3>
+        {% for painting in user.painting_set.all %}
             <img src="{{ painting.photo }}" class="card-img-top">
         {% endfor %}
 
+        {% for buyer in buyers %}
+            <img src="{{ buyer.painting.photo }}" alt="">
+        {% endfor %}
+        
         <h1>Artist</h1>
     {% endif %}
 
     {% for order in orders %}
         <img src="{{ order.painting.photo }}" alt="">
     {% endfor %}
+
+
 </div>
 {% endblock %}
