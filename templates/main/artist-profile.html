@@ -3,20 +3,89 @@
 {% load static %}
 
 {% block content %}
-<div>
-    <h3>{{ artist.id }}</h3>
-    <h3>{{ artist.profile.first_name }}</h3>
-    <h3>{{ artist.profile.last_name }}</h3>
-    <h3>{{ artist.profile.contact }}</h3>
-    <h3>{{ artist.profile.email }}</h3>
-    <h3>{{ artist.medium }}</h3>
-    <h3>{{ artist.style }}</h3>
-    <h3>{{ artist.workEx }}</h3>
-    
-    <h3><img src="{{ artist.photo.url }}" alt=""></h3>
-        {% for painting in artist.painting_set.all %}
-            <img src="{{ painting.photo.url }}" class="card-img-top">
-        {% endfor %}
+<div class="container">
+    <div class="profile-picture rounded-circle">
+        <img src="{{ artist.photo.url }}" alt="">
     </div>
+
+    <div class="row justify-content-center">
+
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th scope="row" class="text-right">Name</th>
+                    <td>{{ artist.profile.first_name }} {{ artist.profile.last_name }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="text-right">Contact</th>
+                    <td>{{ artist.profile.contact }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="text-right">E-mail</th>
+                    <td colspan="2">{{ artist.profile.email }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="text-right">Medium</th>
+                    <td colspan="2">{{ artist.medium }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="text-right">Style</th>
+                    <td colspan="2">{{ artist.style }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="text-right">Experience</th>
+                    <td colspan="2">{{ artist.workEx }} Years</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row mt-3">
+        <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#collapseExample"
+            aria-expanded="false" aria-controls="collapseExample">
+            View {{ artist.profile.first_name }} {{ artist.profile.last_name }}'s paintings
+        </button>
+    </div>
+    <div class="collapse" id="collapseExample">
+        <div>
+            {% for painting in artist.painting_set.all %}
+            <div class="card artist-card">
+                <div class="crop">
+                    <img class="card-img-top" src="{{ painting.photo.url }}" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <div class="card-title">
+                            <h4>{{ painting.name }}</h4>
+                        </div>
+                        <h5>Style: {{ painting.style }}</h5>
+                        <h5>Medium: {{ painting.medium }}</h5>
+                        <h5>Price: {{ painting.price }}</h5>
+                    </p>
+                    {% if painting.soldStatus is True  %}
+                    <button class="btn btn-dark disabled">
+                        Sold
+                    </button>
+                    {% endif %}
+                    {% if painting.artist.profile.id is request.user.id  %}
+                    <a>
+                        <button class="btn btn-outline-danger disabled">
+                            Buy
+                        </button>
+                    </a>
+                    {% else %}
+                    <a href="{% url 'buy-painting' user.id painting.artist.id painting.id %}">
+                        <button class="btn btn-outline-danger">
+                            Buy
+                        </button>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
 </div>
 {% endblock %}

@@ -3,7 +3,6 @@
 body {
     height: 100%;
     font-family: 'Red Hat Display', sans-serif;
-    background-color: rgb(221, 221, 221) ;
     background-repeat: no-repeat;
 }
 
@@ -119,7 +118,7 @@ body {
     right: 5%;
 }
 
-/* artist */
+/* artists */
 
 .crop {
     width: 300px;
@@ -138,4 +137,38 @@ body {
 .artist-card:hover {
     box-shadow: 12px 12px 12px 0 rgba(0, 0, 0, 0.4);
     transition: box-shadow 0.15s ease-in;
+}
+
+/* artist profile */
+
+.profile-picture {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 5px solid white;
+    overflow: hidden;
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.2);
+    left: 5%;
+    z-index: 1000;
+    top: -100px;
+}
+
+.profile-picture img {
+    width: 200px;
+}
+
+.container {
+    margin-top: 150px;
+    position: relative;
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.2);
+    padding-top: 160px; 
+}
+
+.table {
+    width: 65%;
+    border: none;
+}
+
+.container button {
+    width: 100%;
 }
