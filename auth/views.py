@@ -87,8 +87,13 @@ class UserSignUp(TemplateView):
             }
             return render(request, self.template_name, form)
 
-class DeleteAccount(DeleteView):
+class DeleteUser(DeleteView):
     model = models.Profile
-    template_name = 'auth/delete-account.html'
+    template_name = 'auth/delete-user.html'
+    success_url = reverse_lazy('home-page')
+
+class DeleteArtist(DeleteView):
+    model = models.Artist
+    template_name = 'auth/delete-artist.html'
     success_url = reverse_lazy('home-page')
 

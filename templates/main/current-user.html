@@ -12,6 +12,11 @@
         <h3>{{ user.email }}</h3>
         <h3>{{ user.username }}</h3>
         <h1>User</h1>
+        <a href="{% url 'delete-user' user.id  %}">
+            <button>
+                Delete Account
+            </button>
+        </a>
     {% else %}
         <h3>{{ user.id }}</h3>
         <h3>{{ user.profile.first_name }}</h3>
@@ -39,6 +44,11 @@
         {% endfor %}
         
         <h1>Artist</h1>
+        <a href="{% url 'delete-artist' user.id  %}">
+            <button>
+                Delete Account
+            </button>
+        </a>
         {% endif %}
         
         {% for order in orders %}
@@ -46,11 +56,7 @@
         {{user.profile.id}}
         <img src="{{ order.painting.photo.url }}" alt="">
         {% endfor %}
-        <a href="{% url 'delete-account' user.id  %}">
-            <button>
-                Delete Account
-            </button>
-        </a>
+        
     
 
 </div>
