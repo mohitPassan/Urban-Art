@@ -1,26 +1,40 @@
 <div class="card rounded-0 painting">
-    <a href="{% url 'view-painting' painting.id %}"><img src="{{ painting.photo.url }}" class="card-img-top" alt="..."></a>
+    <img src="{{ painting.photo.url }}" class="card-img-top"
+            alt="...">
     <div class="content">
-        <div class="display-4">{{ painting.name }}</div>
-        <a href="{% url 'view-profile' painting.artist.id %}">
-            <h5>Artist: {{ painting.artist.profile.username }}</h5>
-        </a>
+        <h1>{{ painting.name }}</h1>
+        <br>
+        <h5>Artist: {{ painting.artist.profile.username }}</h5>
         <h5>Style: {{ painting.style }}</h5>
         <h5>Medium: {{ painting.medium }}</h5>
         <h5>Size: {{ painting.size }}</h5>
         <h5>Price: Rs. {{ painting.price }}</h5>
+    </div>
+    <div class="action-button">
         {% if painting.soldStatus is True  %}
-            <button class="btn btn-dark disabled">
-                Sold
+        <button class="btn btn-dark disabled">
+            Sold
+        </button>
+        {% elif painting.artist.profile.id != request.user.id  %}
+        <a href="{% url 'buy-painting' user.id painting.artist.id painting.id %}">
+            <button class="btn btn-outline-light">
+                Buy
             </button>
-        {% else %}
-            {% if painting.artist.profile.id != request.user.id  %}
-                <a href="{% url 'buy-painting' user.id painting.artist.id painting.id %}">
-                    <button class="btn btn-outline-light">
-                        Buy
-                    </button>
-                </a>
-            {% endif %}
+        </a>
         {% endif %}
+    </div>
+    <div class="painting-button">
+        <a href="{% url 'view-painting' painting.id %}">
+            <button class="btn btn-outline-light">
+                View Painting
+            </button>
+        </a>
+    </div>
+    <div class="profile-button">
+        <a href="{% url 'view-profile' painting.artist.id %}">
+            <button class="btn btn-outline-light">
+                View artist profile
+            </button>
+        </a>
     </div>
 </div>
