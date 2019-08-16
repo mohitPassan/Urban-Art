@@ -10,7 +10,7 @@
         </button>
         {% endif %}
         {% if painting.artist.profile.id is request.user.id  %}
-        <a href="{% url 'buy-painting' user.id painting.artist.id painting.id %}">
+        <a>
             <button class="btn btn-outline-light disabled">
                 Buy
             </button>

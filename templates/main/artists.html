@@ -1,9 +1,7 @@
 {% extends 'main/layouts/base.html' %}
 
 {% block content %}
-    <div class="card-columns">
-        {% for artist in artist_list %}
-            {% include 'main/components/artist-card.html' %}
-        {% endfor%}
-    </div>
+    {% for artist in artist_list %}
+        {% include 'main/components/artist-card.html' %}
+    {% endfor%}
 {% endblock %}
