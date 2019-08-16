@@ -47,9 +47,7 @@ body {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.btn-outline-danger {
-    width: 35%;
-}
+
 
 #guest {
     position: absolute;
