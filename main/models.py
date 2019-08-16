@@ -15,7 +15,7 @@ class Artist(models.Model):
 
 class Profile(User):
     contact = models.CharField(max_length = 15)
-    address = models.TextField()
+    address = models.CharField(max_length = 256)
     artist = models.OneToOneField('Artist', on_delete = models.CASCADE, null = True, blank = True)
 
 class Painting(models.Model):
