@@ -3,61 +3,210 @@
 {% load static %}
 
 {% block content %}
+
 <div>
     {% if user.photo is None  %}
-        <h3>{{ user.id }}</h3>
-        <h3>{{ user.first_name }}</h3>
-        <h3>{{ user.last_name }}</h3>
-        <h3>{{ user.contact }}</h3>
-        <h3>{{ user.email }}</h3>
-        <h3>{{ user.username }}</h3>
-        <h1>User</h1>
-        <a href="{% url 'delete-user' user.id  %}">
-            <button>
-                Delete Account
+    <div class="container">
+        <div class="profile-picture rounded-circle">
+            <img src="{{ artist.photo.url }}" alt="">
+        </div>
+
+        <div class="row justify-content-center">
+
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th scope="row" class="text-right">Name</th>
+                        <td>{{ user.first_name }} {{ user.last_name }}</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-right">Contact</th>
+                        <td>{{ user.contact }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-right">E-mail</th>
+                        <td colspan="2">{{ user.email }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="row mt-3">
+            <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#collapseExample"
+                aria-expanded="false" aria-controls="collapseExample">
+                View my orders
             </button>
-        </a>
+        </div>
+
+        <div class="collapse" id="collapseExample">
+            <div>
+                {% for order in orders %}
+                <div class="card artist-card">
+                    <div class="crop">
+                        <img class="card-img-top" src="{{ order.painting.photo.url }}" alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <div class="card-title">
+                                <h4>{{ order.painting.name }}</h4>
+                            </div>
+                            <h5>Artist: {{ order.artist.profile.first_name }} {{ order.artist.profile.last_name }}</h5>
+                            <h5>Style: {{ order.painting.style }}</h5>
+                            <h5>Medium: {{ order.painting.medium }}</h5>
+                            <h5>Price: {{ order.painting.price }}</h5>
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <a href="{% url 'delete-user' user.id  %}">
+        <button>
+            Delete Account
+        </button>
+    </a>
     {% else %}
-        <h3>{{ user.id }}</h3>
-        <h3>{{ user.profile.first_name }}</h3>
-        <h3>{{ user.profile.last_name }}</h3>
-        <h3>{{ user.profile.contact }}</h3>
-        <h3>{{ user.profile.email }}</h3>
-        <h3>{{ user.medium }}</h3>
-        <h3>{{ user.style }}</h3>
-        <h3>{{ user.workEx }}</h3>
-        <a href="{% url 'add-painting' user.id %}"><h3>ADD PAINTING</h3></a>
-        
-        <h3>{{ user.username }}</h3>
-        
-        <h3><img src="{{ user.photo.url }}" alt=""></h3>
-        <a href = "{% url 'change-picture' user.id %}">
-            <button>Edit</button>
-        </a>
-        {% for painting in user.painting_set.all %}
-            <img src="{{ painting.photo.url }}" class="card-img-top">
-        {% endfor %}
+    <div class="container">
+        <div class="profile-picture rounded-circle">
+            <img src="{{ user.photo.url }}" alt="">
+        </div>
 
-        {% for buyer in buyers %}
-        <h2>{{ buyer.user.username }}</h2>
-            <img src="{{ buyer.painting.photo.url }}" alt="">
-        {% endfor %}
-        
-        <h1>Artist</h1>
-        <a href="{% url 'delete-artist' user.id  %}">
-            <button>
-                Delete Account
-            </button>
-        </a>
-        {% endif %}
-        
-        {% for order in orders %}
-        {{user.id}}
-        {{user.profile.id}}
-        <img src="{{ order.painting.photo.url }}" alt="">
-        {% endfor %}
-        
-    
+        <div class="row justify-content-center">
 
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th scope="row" class="text-right">Name</th>
+                        <td>{{ user.profile.first_name }} {{ user.profile.last_name }}</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-right">Contact</th>
+                        <td>{{ user.profile.contact }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-right">E-mail</th>
+                        <td colspan="2">{{ user.profile.email }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-right">Medium</th>
+                        <td colspan="2">{{ user.profile.medium }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-right">Style</th>
+                        <td colspan="2">{{ user.profile.style }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-right">Experience</th>
+                        <td colspan="2">{{ user.profile.workEx }} Years</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="accordian">
+
+            <div class="row mt-3">
+                <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#collapseExample1"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    View my paintings
+                </button>
+            </div>
+
+            <div class="collapse" id="collapseExample1">
+                <div>
+                    {% for painting in user.painting_set.all %}
+                    <div class="card artist-card">
+                        <div class="crop">
+                            <img class="card-img-top" src="{{ painting.photo.url }}" alt="Card image cap">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                <div class="card-title">
+                                    <h4>{{ painting.name }}</h4>
+                                </div>
+                                <h5>Style: {{ painting.style }}</h5>
+                                <h5>Medium: {{ painting.medium }}</h5>
+                                <h5>Price: {{ painting.price }}</h5>
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#collapseExample2"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    View my orders
+                </button>
+            </div>
+
+            <div class="collapse" id="collapseExample2">
+                <div>
+                    {% for order in orders %}
+                    <div class="card artist-card">
+                        <div class="crop">
+                            <img class="card-img-top" src="{{ order.painting.photo.url }}" alt="Card image cap">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                <div class="card-title">
+                                    <h4>{{ order.painting.name }}</h4>
+                                </div>
+                                <h5>Artist: {{ order.artist.profile.first_name }} {{ order.artist.profile.last_name }}
+                                </h5>
+                                <h5>Style: {{ order.painting.style }}</h5>
+                                <h5>Medium: {{ order.painting.medium }}</h5>
+                                <h5>Price: {{ order.painting.price }}</h5>
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#collapseExample3"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    View sold painting
+                </button>
+            </div>
+
+            <div class="collapse" id="collapseExample3">
+                <div>
+                    {% for buyer in buyers %}
+                    <div class="card artist-card">
+                        <div class="crop">
+                            <img class="card-img-top" src="{{ buyer.painting.photo.url }}" alt="Card image cap">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                <div class="card-title">
+                                    <h4>{{ buyer.painting.name }}</h4>
+                                </div>
+                                <h5>Buyer: {{ buyer.profile.first_name }} {{ buyer.profile.last_name }}</h5>
+                                <h5>Style: {{ buyer.painting.style }}</h5>
+                                <h5>Medium: {{ buyer.painting.medium }}</h5>
+                                <h5>Price: {{ buyer.painting.price }}</h5>
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="{% url 'delete-artist' user.id  %}">
+        <button>
+            Delete Account
+        </button>
+    </a>
+    {% endif %}
 </div>
 {% endblock %}

@@ -172,3 +172,7 @@ body {
 .container button {
     width: 100%;
 }
+
+.modal-content {
+    padding-left: 4.5%;
+}
