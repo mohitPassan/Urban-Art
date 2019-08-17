@@ -4,50 +4,57 @@
 
 <div class="container">
 
-
-    <div class="card mb-3 mt-5">
-        <img src="{{ painting.photo.url }}" class="card-img-top painting-page">
+    <div class="card mb-3 mt-5 painting-photo">
+        <img src="{{ painting.photo.url }}" class="card-img-top">
         <div class="card-body">
-            <h5 class="card-title">{{ painting.name }}</h5>
-            <p class="card-text">
-                <div>{{ painting.size }}</div>
-                <div>{{ painting.style }}</div>
-                <div>{{ painting.medium }}</div>
-                <div>{{ painting.price }}</div>
-            </p>
-            {% if painting.soldStatus is True  %}
-            <button class="btn btn-dark disabled">
-                Sold
-            </button>
-            {% else %}
-            {% if painting.artist.profile.id != request.user.id  %}
-            <a href="{% url 'buy-painting' user.id painting.artist.id painting.id %}">
-                <button class="btn btn-outline-light">
-                    Buy
-                </button>
-            </a>
-            {% endif %}
-            {% endif %}
+            <div class="card-text text-right">
+                <button class="btn btn-lg btn-outline-dark" data-toggle="modal" data-target="#exampleModal">Details</button>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- <img src="{{ painting.photo.url }}" alt="">
-<h2>{{ painting.size }}</h2>
-<h2>{{ painting.style }}</h2>
-<h2>{{ painting.medium }}</h2>
-<h2>{{ painting.price }}</h2>
-{% if painting.soldStatus is True  %}
-<button class="btn btn-dark disabled">
-    Sold
-</button>
-{% else %}
-{% if painting.artist.profile.id != request.user.id  %}
-<a href="{% url 'buy-painting' user.id painting.artist.id painting.id %}">
-    <button class="btn btn-outline-light">
-        Buy
-    </button>
-</a>
-{% endif %}
-{% endif %} -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{ painting.name }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group">
+                    <li class="list-group-item">Artist: {{painting.artist.profile.first_name }}
+                        {{painting.artist.profile.last_name }}</li>
+                    <li class="list-group-item">Style: {{ painting.style }}</li>
+                    <li class="list-group-item">Medium: {{ painting.medium }}</li>
+                    <li class="list-group-item">Size: {{ painting.size }}</li>
+                    <li class="list-group-item">Price: {{ painting.price }}</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                {% if painting.soldStatus is True  %}
+                <button class="btn btn-dark disabled">
+                    Sold
+                </button>
+                {% elif painting.artist.profile.id is request.user.id  %}
+                <a>
+                    <button class="btn btn-outline-danger disabled">
+                        Buy
+                    </button>
+                </a>
+                {% else %}
+                <a href="{% url 'buy-painting' user.id painting.artist.id painting.id %}">
+                    <button class="btn btn-outline-danger">
+                        Buy
+                    </button>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
