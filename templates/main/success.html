@@ -1,5 +1,10 @@
-{% extends 'main/layouts/base.html' %}
+{% extends 'main/layouts/success-layout.html' %}
 
 {% block content %}
-    <h1>Halo</h1>
+<div class="jumbotron mt-5">
+    <h1 class="display-4">Thank You for shopping with Urban Art!</h1>
+    <hr class="my-4" style="width: 50%; left: -24%; position: relative;">
+    <a class="btn btn-outline-info btn-lg" href="{% url 'paintings' %}" role="button">Continue Shoppping</a>
+    <a class="btn btn-outline-danger btn-lg ml-3" href="{% url 'logout' %}" role="button">Logout</a>
+</div>
 {% endblock %}

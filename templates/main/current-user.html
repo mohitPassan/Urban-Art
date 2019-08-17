@@ -52,6 +52,7 @@
                         <h5>Style: {{ order.painting.style }}</h5>
                         <h5>Medium: {{ order.painting.medium }}</h5>
                         <h5>Price: {{ order.painting.price }}</h5>
+                        <h5>Size: {{ order.painting.size }}</h5>
                         <a href="{% url 'view-painting' order.painting.id %}" class="btn btn-outline-danger">View
                             Painting</a>
                     </p>
@@ -122,6 +123,7 @@
                             <h5>Style: {{ painting.style }}</h5>
                             <h5>Medium: {{ painting.medium }}</h5>
                             <h5>Price: {{ painting.price }}</h5>
+                            <h5>Size: {{ painting.size }}</h5>
                             <a href="{% url 'view-painting' painting.id %}" class="btn btn-outline-danger">View
                                 Painting</a>
                         </p>
@@ -152,6 +154,7 @@
                             <h5>Style: {{ order.painting.style }}</h5>
                             <h5>Medium: {{ order.painting.medium }}</h5>
                             <h5>Price: {{ order.painting.price }}</h5>
+                            <h5>Size: {{ order.painting.size }}</h5>
                             <a href="{% url 'view-painting' order.painting.id %}" class="btn btn-outline-danger">View
                                 Painting</a>
                         </p>
@@ -181,6 +184,7 @@
                             <h5>Style: {{ buyer.painting.style }}</h5>
                             <h5>Medium: {{ buyer.painting.medium }}</h5>
                             <h5>Price: {{ buyer.painting.price }}</h5>
+                            <h5>Size: {{ buyer.painting.size }}</h5>
                             <a href="{% url 'view-painting' buyer.painting.id %}" class="btn btn-outline-danger">View
                                 Painting</a>
                         </p>
