@@ -70,6 +70,13 @@ class Painting(DetailView):
 class Payment(CreateView):
     template_name = 'main/payment.html'
     model = models.Payment
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['artist'] = models.Artist.objects.get(id = self.kwargs['artist_id'])
+        context['painting'] = models.Painting.objects.get(id = self.kwargs['painting_id'])
+        return context
+
     fields = [
         'mode',
         'card_number',

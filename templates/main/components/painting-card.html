@@ -8,8 +8,7 @@
         <button class="btn btn-dark disabled">
             Sold
         </button>
-        {% endif %}
-        {% if painting.artist.profile.id is request.user.id  %}
+        {% elif painting.artist.profile.id is request.user.id  %}
         <a>
             <button class="btn btn-outline-light disabled">
                 Buy

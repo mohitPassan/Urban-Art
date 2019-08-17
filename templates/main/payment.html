@@ -1,9 +1,72 @@
 {% extends 'main/layouts/base.html' %}
 
 {% block content %}
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">Buy</button>
-    </form>
+<div class="container payment-container mt-5">
+    <div class="card payment-card">
+        <div class="card-header">
+            Buy {{ painting.name }}
+        </div>
+        <div class="card-body">
+            <div class="painting-wrapper">
+                <img src="{{ painting.photo.url }}" alt="">
+            </div>
+            <div class="artist-wrapper rounded-circle">
+                <img src="{{ artist.photo.url }}" alt="">
+            </div>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group">
+                        <p class="mb-2">Card</p>
+                        <div class="input-group">
+                            <select class="custom-select" name="mode" required="" id="id_mode">
+                                <option value="" selected="">Select</option>
+                                <option value="cc">Credit Card</option>
+                                <option value="dc">Debit Card</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group ">
+                        <label for="id_card_number">Card number</label><input type="text" name="card_number"
+                            maxlength="256" required="" id="id_card_number" class="form-control"
+                            placeholder="Card Number">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group ">
+                        <label for="id_name_on_card">Name on card</label><input type="text" name="name_on_card"
+                            maxlength="256" required="" id="id_name_on_card" class="form-control"
+                            placeholder="Name on card">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group ">
+                        <label for="id_expiration_month">Expiration month</label><input type="number"
+                            name="expiration_month" required="" id="id_expiration_month" class="form-control"
+                            placeholder="Expiration month">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group ">
+                        <label for="id_expiration_year">Expiration year</label><input type="number"
+                            name="expiration_year" required="" id="id_expiration_year" class="form-control"
+                            placeholder="Expiration year">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group ">
+                        <label for="id_cvv">CVV</label><input type="number" name="cvv" required="" id="id_cvv"
+                            class="form-control" placeholder="CVV">
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <button type="submit" class="btn btn-outline-danger">Pay <i class="fas fa-rupee-sign ml-2" style="font-size: 0.9rem;"></i>  {{ painting.price }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
