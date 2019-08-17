@@ -2,6 +2,7 @@
     <img src="{{ painting.photo.url }}" class="card-img-top" alt="...">
     <div class="content">
         <h2>{{ painting.name }}</h2>
+        <p style="font-size: 1.25rem">Artist: {{ painting.artist.profile.first_name }} {{ painting.artist.profile.last_name }}</p style="font-size: 1.25rem">
     </div>
     <div class="action-button">
         {% if painting.soldStatus is True  %}

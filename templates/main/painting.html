@@ -1,22 +1,53 @@
 {% extends 'main/layouts/base.html' %}
 
 {% block content %}
-    <img src="{{ painting.photo.url }}" alt="">
-    <h2>{{ painting.size }}</h2>
-    <h2>{{ painting.style }}</h2>
-    <h2>{{ painting.medium }}</h2>
-    <h2>{{ painting.price }}</h2>
-    {% if painting.soldStatus is True  %}
-    <button class="btn btn-dark disabled">
-        Sold
-    </button>
-    {% else %}
-        {% if painting.artist.profile.id != request.user.id  %}
+
+<div class="container">
+
+
+    <div class="card mb-3 mt-5">
+        <img src="{{ painting.photo.url }}" class="card-img-top painting-page">
+        <div class="card-body">
+            <h5 class="card-title">{{ painting.name }}</h5>
+            <p class="card-text">
+                <div>{{ painting.size }}</div>
+                <div>{{ painting.style }}</div>
+                <div>{{ painting.medium }}</div>
+                <div>{{ painting.price }}</div>
+            </p>
+            {% if painting.soldStatus is True  %}
+            <button class="btn btn-dark disabled">
+                Sold
+            </button>
+            {% else %}
+            {% if painting.artist.profile.id != request.user.id  %}
             <a href="{% url 'buy-painting' user.id painting.artist.id painting.id %}">
                 <button class="btn btn-outline-light">
                     Buy
                 </button>
             </a>
-        {% endif %}
-    {% endif %}
+            {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- <img src="{{ painting.photo.url }}" alt="">
+<h2>{{ painting.size }}</h2>
+<h2>{{ painting.style }}</h2>
+<h2>{{ painting.medium }}</h2>
+<h2>{{ painting.price }}</h2>
+{% if painting.soldStatus is True  %}
+<button class="btn btn-dark disabled">
+    Sold
+</button>
+{% else %}
+{% if painting.artist.profile.id != request.user.id  %}
+<a href="{% url 'buy-painting' user.id painting.artist.id painting.id %}">
+    <button class="btn btn-outline-light">
+        Buy
+    </button>
+</a>
+{% endif %}
+{% endif %} -->
 {% endblock %}
