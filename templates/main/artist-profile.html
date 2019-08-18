@@ -35,6 +35,10 @@
                     <th scope="row" class="text-right">Experience</th>
                     <td colspan="2">{{ artist.workEx }} Years</td>
                 </tr>
+                <tr>
+                    <th scope="row" class="text-right">Address</th>
+                    <td colspan="2">{{ artist.profile.address }}</td>
+                </tr>
 
             </tbody>
         </table>
@@ -43,44 +47,52 @@
     <div class="painting-partition text-center">
         {{ artist.profile.first_name }} {{ artist.profile.last_name }}'s paintings
     </div>
+    <div class="container-fluid">
 
-    <div class="row">
-        {% for painting in artist.painting_set.all %}
-        <div class="col-4">
-            <div class="card painting-card">
-                <img class="card-img-top" src="{{ painting.photo.url }}" alt="Card image cap">
-                <div class="card-body">
-                    <p class="card-text">
-                        <div class="card-title">
-                            <h4>{{ painting.name }}</h4>
+
+        <div class="row">
+
+
+            {% for painting in artist.painting_set.all %}
+            <div class="col-4">
+                <div class="card-group">
+                    <div class="card painting-card">
+                        <img class="card-img-top" src="{{ painting.photo.url }}" alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">
+                                <div class="card-title">
+                                    <h4>{{ painting.name }}</h4>
+                                </div>
+                                <h5>Style: {{ painting.style }}</h5>
+                                <h5>Medium: {{ painting.medium }}</h5>
+                                <h5>Price: {{ painting.price }}</h5>
+                                <h5>Size: {{ painting.size }}</h5>
+                            </p>
+                            {% if painting.soldStatus is True  %}
+                            <button class="btn btn-dark disabled">
+                                Sold
+                            </button>
+                            {% elif painting.artist.profile.id is request.user.id  %}
+                            <a>
+                                <button class="btn btn-outline-danger disabled">
+                                    Buy
+                                </button>
+                            </a>
+                            {% else %}
+                            <a href="{% url 'buy-painting' user.id painting.artist.id painting.id %}">
+                                <button class="btn btn-outline-danger">
+                                    Buy
+                                </button>
+                            </a>
+                            {% endif %}
+                            <a href="{% url 'view-painting' painting.id %}" class="btn btn-outline-danger ml-2">View
+                                Painting</a>
                         </div>
-                        <h5>Style: {{ painting.style }}</h5>
-                        <h5>Medium: {{ painting.medium }}</h5>
-                        <h5>Price: {{ painting.price }}</h5>
-                        <h5>Size: {{ painting.size }}</h5>
-                    </p>
-                    {% if painting.soldStatus is True  %}
-                    <button class="btn btn-dark disabled">
-                        Sold
-                    </button>
-                    {% elif painting.artist.profile.id is request.user.id  %}
-                    <a>
-                        <button class="btn btn-outline-danger disabled">
-                            Buy
-                        </button>
-                    </a>
-                    {% else %}
-                    <a href="{% url 'buy-painting' user.id painting.artist.id painting.id %}">
-                        <button class="btn btn-outline-danger">
-                            Buy
-                        </button>
-                    </a>
-                    {% endif %}
-                    <a href="{% url 'view-painting' painting.id %}" class="btn btn-outline-danger ml-2">View Painting</a>
+                    </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 </div>
 {% endblock %}

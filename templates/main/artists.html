@@ -1,7 +1,15 @@
 {% extends 'main/layouts/base.html' %}
 
 {% block content %}
+<div class="container-fluid">
+    <div class="row">
         {% for artist in artist_list %}
-            {% include 'main/components/artist-card.html' %}
+        <div class="col-3">
+            <div class="card-group">
+                {% include 'main/components/artist-card.html' %}
+            </div>
+        </div>
         {% endfor%}
+    </div>
+</div>
 {% endblock %}

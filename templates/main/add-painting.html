@@ -1,9 +1,65 @@
 {% extends 'main/layouts/base.html' %}
 
 {% block content %}
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">Submit</button>
-    </form>
+
+<div class="container payment-container mt-5">
+
+
+    <div class="card payment-card">
+        <div class="card-header">
+            Add a new masterpiece!
+        </div>
+        <div class="card-body">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="id_name">Name</label>
+                        <input type="text" name="name" maxlength="256" required="" id="id_name" class="form-control"
+                            placeholder="Name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="id_price">Price</label>
+                        <input type="number" name="price" required="" id="id_price" class="form-control"
+                            placeholder="Price">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="id_medium">Medium</label>
+                        <input type="text" name="medium" maxlength="256" required="" id="id_medium" class="form-control"
+                            placeholder="Medium">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="id_style">Style</label>
+                        <input type="text" name="style" maxlength="256" required="" id="id_style" class="form-control"
+                            placeholder="Style">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="id_size">Size</label>
+                        <input type="text" name="size" maxlength="256" required="" id="id_size" class="form-control"
+                            placeholder="Size">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="input-group-prepend">
+                            <span id="inputGroupFileAddon01" class="mb-2">Photo</span>
+                        </div>
+                        <div class="custom-file">
+                            <label class="custom-file-label" for="id_photo">Choose a profile picture</label><br>
+                            <input type="file" class="custom-file-input" name="photo" accept="image/*" id="id_photo">
+                        </div>
+                        <!-- <label for="id_photo">Photo:</label><input type="file" name="photo" accept="image/*"
+                            id="id_photo"> -->
+
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <button type="submit" class="btn btn-outline-danger">ADD</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

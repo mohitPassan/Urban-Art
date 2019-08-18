@@ -116,7 +116,6 @@ body {
 /* artists */
 
 .crop .card-img-top {
-    width: 15vw;
     height: 15vw;
     object-fit: cover;
     object-position: top;
@@ -125,7 +124,7 @@ body {
 .artist-card {
     float: left;
     position: relative;
-    margin: 2% 1%;
+    margin: 5% 1%;
     border: 10px solid white;
     box-shadow: 7px 7px 8px 0 rgba(0, 0, 0, 0.2);
 }
@@ -151,7 +150,6 @@ body {
 
 .painting-card .card-img-top {
     height: 16vw;
-    width: 16vw;
     object-fit: cover;
 }
 
@@ -206,6 +204,7 @@ body {
     width: 200px;
     filter: brightness(1);
     transition: all 0.3s ease-in-out;
+    position: relative;
 }
 
 .profile-picture:hover img {

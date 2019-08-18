@@ -27,6 +27,10 @@
                     <th scope="row" class="text-right">E-mail</th>
                     <td colspan="2">{{ user.email }}</td>
                 </tr>
+                <tr>
+                    <th scope="row" class="text-right">Address</th>
+                    <td colspan="2">{{ user.address }}</td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -35,31 +39,36 @@
         My Orders
     </div>
 
-    <div class="row">
-        {% for order in orders %}
-        <div class="col-4">
-            <div class="card painting-card">
-                <div class="crop">
-                    <img class="card-img-top" src="{{ order.painting.photo.url }}" alt="Card image cap">
-                </div>
-                <div class="card-body">
-                    <p class="card-text">
-                        <div class="card-title">
-                            <h4>{{ order.painting.name }}</h4>
+    <div class="container-fluid">
+        <div class="row">
+            {% for order in orders %}
+            <div class="col-4">
+                <div class="card-group">
+                    <div class="card painting-card">
+                        <div class="crop">
+                            <img class="card-img-top" src="{{ order.painting.photo.url }}" alt="Card image cap">
                         </div>
-                        <h5>Artist: {{ order.artist.profile.first_name }} {{ order.artist.profile.last_name }}
-                        </h5>
-                        <h5>Style: {{ order.painting.style }}</h5>
-                        <h5>Medium: {{ order.painting.medium }}</h5>
-                        <h5>Price: {{ order.painting.price }}</h5>
-                        <h5>Size: {{ order.painting.size }}</h5>
-                        <a href="{% url 'view-painting' order.painting.id %}" class="btn btn-outline-danger">View
-                            Painting</a>
-                    </p>
+                        <div class="card-body">
+                            <p class="card-text">
+                                <div class="card-title">
+                                    <h4>{{ order.painting.name }}</h4>
+                                </div>
+                                <h5>Artist: {{ order.artist.profile.first_name }} {{ order.artist.profile.last_name }}
+                                </h5>
+                                <h5>Style: {{ order.painting.style }}</h5>
+                                <h5>Medium: {{ order.painting.medium }}</h5>
+                                <h5>Price: {{ order.painting.price }}</h5>
+                                <h5>Size: {{ order.painting.size }}</h5>
+                                <a href="{% url 'view-painting' order.painting.id %}"
+                                    class="btn btn-outline-danger">View
+                                    Painting</a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
     <a href="{% url 'delete-user' user.id  %}">
         <button class="deleteUserBtn btn btn-danger rounded-circle" data-toggle="tooltip" data-placement="top"
@@ -72,7 +81,9 @@
         <div class="profile-picture rounded-circle">
             <a href="{% url 'change-picture' user.id %}"><img src="{{ user.photo.url }}" alt=""></a>
         </div>
-        <a href="{% url 'change-picture' user.id %}"><p class="edit-text">Click image to edit</p></a>
+        <a href="{% url 'change-picture' user.id %}">
+            <p class="edit-text">Click image to edit</p>
+        </a>
 
         <div class="row justify-content-center">
             <table class="table table-bordered">
@@ -102,6 +113,10 @@
                         <th scope="row" class="text-right">Experience</th>
                         <td colspan="2">{{ user.profile.srtist.workEx }} Years</td>
                     </tr>
+                    <tr>
+                        <th scope="row" class="text-right">Address</th>
+                        <td colspan="2">{{ user.profile.address }}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -109,89 +124,103 @@
         <div class="painting-partition text-center">
             My Paintings
         </div>
-
-        <div class="row">
-            {% for painting in user.painting_set.all %}
-            <div class="col-4">
-                <div class="card painting-card">
-                    <img class="card-img-top" src="{{ painting.photo.url }}" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">
-                            <div class="card-title">
-                                <h4>{{ painting.name }}</h4>
+        <div class="container-fluid">
+            <div class="row">
+                {% for painting in user.painting_set.all %}
+                <div class="col-4">
+                    <div class="card-group">
+                        <div class="card painting-card">
+                            <img class="card-img-top" src="{{ painting.photo.url }}" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <div class="card-title">
+                                        <h4>{{ painting.name }}</h4>
+                                    </div>
+                                    <h5>Style: {{ painting.style }}</h5>
+                                    <h5>Medium: {{ painting.medium }}</h5>
+                                    <h5>Price: {{ painting.price }}</h5>
+                                    <h5>Size: {{ painting.size }}</h5>
+                                    <a href="{% url 'view-painting' painting.id %}" class="btn btn-outline-danger">View
+                                        Painting</a>
+                                </p>
                             </div>
-                            <h5>Style: {{ painting.style }}</h5>
-                            <h5>Medium: {{ painting.medium }}</h5>
-                            <h5>Price: {{ painting.price }}</h5>
-                            <h5>Size: {{ painting.size }}</h5>
-                            <a href="{% url 'view-painting' painting.id %}" class="btn btn-outline-danger">View
-                                Painting</a>
-                        </p>
+                        </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
 
         <div class="painting-partition text-center">
             My Orders
         </div>
 
-        <div class="row">
-            {% for order in orders %}
-            <div class="col-4">
-                <div class="card painting-card">
-                    <div class="crop">
-                        <img class="card-img-top" src="{{ order.painting.photo.url }}" alt="Card image cap">
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">
-                            <div class="card-title">
-                                <h4>{{ order.painting.name }}</h4>
+        <div class="container-fluid">
+            <div class="row">
+                {% for order in orders %}
+                <div class="col-4">
+                    <div class="card-group">
+                        <div class="card painting-card">
+                            <div class="crop">
+                                <img class="card-img-top" src="{{ order.painting.photo.url }}" alt="Card image cap">
                             </div>
-                            <h5>Artist: {{ order.artist.profile.first_name }} {{ order.artist.profile.last_name }}
-                            </h5>
-                            <h5>Style: {{ order.painting.style }}</h5>
-                            <h5>Medium: {{ order.painting.medium }}</h5>
-                            <h5>Price: {{ order.painting.price }}</h5>
-                            <h5>Size: {{ order.painting.size }}</h5>
-                            <a href="{% url 'view-painting' order.painting.id %}" class="btn btn-outline-danger">View
-                                Painting</a>
-                        </p>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <div class="card-title">
+                                        <h4>{{ order.painting.name }}</h4>
+                                    </div>
+                                    <h5>Artist: {{ order.artist.profile.first_name }}
+                                        {{ order.artist.profile.last_name }}
+                                    </h5>
+                                    <h5>Style: {{ order.painting.style }}</h5>
+                                    <h5>Medium: {{ order.painting.medium }}</h5>
+                                    <h5>Price: {{ order.painting.price }}</h5>
+                                    <h5>Size: {{ order.painting.size }}</h5>
+                                    <a href="{% url 'view-painting' order.painting.id %}"
+                                        class="btn btn-outline-danger">View
+                                        Painting</a>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
 
         <div class="painting-partition text-center">
             Sold Paintings
         </div>
 
-        <div class="row">
-            {% for buyer in buyers %}
-            <div class="col-4">
-                <div class="card painting-card">
-                    <div class="crop">
-                        <img class="card-img-top" src="{{ buyer.painting.photo.url }}" alt="Card image cap">
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">
-                            <div class="card-title">
-                                <h4>{{ buyer.painting.name }}</h4>
+        <div class="container-fluid">
+            <div class="row">
+                {% for buyer in buyers %}
+                <div class="col-4">
+                    <div class="card-group">
+                        <div class="card painting-card">
+                            <div class="crop">
+                                <img class="card-img-top" src="{{ buyer.painting.photo.url }}" alt="Card image cap">
                             </div>
-                            <h5>Buyer: {{ buyer.user.first_name }} {{ buyer.user.last_name }}</h5>
-                            <h5>Style: {{ buyer.painting.style }}</h5>
-                            <h5>Medium: {{ buyer.painting.medium }}</h5>
-                            <h5>Price: {{ buyer.painting.price }}</h5>
-                            <h5>Size: {{ buyer.painting.size }}</h5>
-                            <a href="{% url 'view-painting' buyer.painting.id %}" class="btn btn-outline-danger">View
-                                Painting</a>
-                        </p>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <div class="card-title">
+                                        <h4>{{ buyer.painting.name }}</h4>
+                                    </div>
+                                    <h5>Buyer: {{ buyer.user.first_name }} {{ buyer.user.last_name }}</h5>
+                                    <h5>Style: {{ buyer.painting.style }}</h5>
+                                    <h5>Medium: {{ buyer.painting.medium }}</h5>
+                                    <h5>Price: {{ buyer.painting.price }}</h5>
+                                    <h5>Size: {{ buyer.painting.size }}</h5>
+                                    <a href="{% url 'view-painting' buyer.painting.id %}"
+                                        class="btn btn-outline-danger">View
+                                        Painting</a>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
         <a href="{% url 'delete-artist' user.id  %}">
             <button class="deleteUserBtn btn btn-danger rounded-circle" data-toggle="tooltip" data-placement="top"
