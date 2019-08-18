@@ -211,6 +211,7 @@
                                     <h5>Medium: {{ buyer.painting.medium }}</h5>
                                     <h5>Price: {{ buyer.painting.price }}</h5>
                                     <h5>Size: {{ buyer.painting.size }}</h5>
+                                    <h5>Sold at: {{ buyer.payment_time.date }}</h5>
                                     <a href="{% url 'view-painting' buyer.painting.id %}"
                                         class="btn btn-outline-danger">View
                                         Painting</a>
