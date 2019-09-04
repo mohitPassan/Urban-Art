@@ -1,0 +1,1 @@
+web: gunicorn UrbanArt.wsgi --log-file -
