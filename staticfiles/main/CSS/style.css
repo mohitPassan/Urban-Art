@@ -1,0 +1,310 @@
+/* base */
+
+body {
+    height: 100%;
+    font-family: 'Red Hat Display', sans-serif;
+    background-repeat: no-repeat;
+}
+
+.navbar {
+    background-color: black;
+}
+
+.navbar-brand {
+    font-size: 2rem;
+}
+
+.nav-item {
+    font-size: 1.25rem;
+}
+
+/* index */
+
+.painting {
+    border: 10px solid white;
+    box-shadow: 7px 7px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.15s ease-out;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    position: relative;
+}
+
+.painting .content {
+    margin-left: 5%;
+    width: 90%;
+    color: white;
+    position: absolute;
+    bottom: -5%;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.painting:hover .content {
+    opacity: 1;
+    bottom: 0%;
+    transition: all 0.5s ease-in-out;
+}
+
+.painting img {
+    filter: brightness(1);
+    transition: all 0.5s ease-in-out;
+}
+
+.painting:hover img {
+    filter: brightness(0.3);
+    transition: all 0.5s ease-in-out;
+}
+
+.painting:hover {
+    box-shadow: 12px 12px 12px 0 rgba(0, 0, 0, 0.4);
+    transition: box-shadow 0.15s ease-in;
+}
+
+.card-columns {
+    column-count: 4;
+    column-gap: 50px;
+}
+
+.action-button {
+    position: absolute;
+    top: 1rem;
+    right: -2%;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.painting:hover .action-button {
+    right: 5%;
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+}
+
+.painting-button {
+    position: absolute;
+    top: 4rem;
+    right: -2%;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.painting:hover .painting-button {
+    right: 5%;
+    opacity: 1;
+    transition: all 0.8s ease-in-out;
+}
+
+.profile-button {
+    position: absolute;
+    top: 7rem;
+    right: -2%;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.painting:hover .profile-button {
+    right: 5%;
+    opacity: 1;
+    transition: all 1.1s ease-in-out;
+}
+
+.addPaintingBtn {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+}
+
+/* artists */
+
+.crop .card-img-top {
+    height: 15vw;
+    object-fit: cover;
+    object-position: top;
+}
+
+.artist-card {
+    float: left;
+    position: relative;
+    margin: 5% 1%;
+    border: 10px solid white;
+    box-shadow: 7px 7px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.artist-card:hover {
+    box-shadow: 12px 12px 12px 0 rgba(0, 0, 0, 0.4);
+    transition: box-shadow 0.15s ease-in;
+}
+
+/* artist profile */
+
+.painting-card {
+    float: left;
+    margin: 3.5% 1.5%;
+    border: 10px solid white;
+    box-shadow: 7px 7px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.painting-card:hover {
+    box-shadow: 12px 12px 12px 0 rgba(0, 0, 0, 0.4);
+    transition: box-shadow 0.15s ease-in;
+}
+
+.painting-card .card-img-top {
+    height: 16vw;
+    object-fit: cover;
+}
+
+.user-picture {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 5px solid white;
+    overflow: hidden;
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.2);
+    left: 5%;
+    z-index: 1000;
+    top: -100px;
+    background-color: white;
+}
+
+.user-picture img {
+    width: 200px;
+}
+
+.profile-picture {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 5px solid white;
+    overflow: hidden;
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.2);
+    left: 5%;
+    z-index: 999;
+    top: -100px;
+    background-color: white;
+}
+
+.edit-text {
+    color: white;
+    font-size: 1.15rem;
+    position: absolute;
+    left: 80px;
+    top: 7px;
+    margin-top: -20px;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.edit-text-visible {
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+}
+
+.profile-picture img {
+    width: 200px;
+    filter: brightness(1);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+.profile-picture:hover img {
+    filter: brightness(0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.profile-container {
+    margin-top: 150px;
+    position: relative;
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.2);
+    padding: 8% 0;
+}
+
+.table {
+    width: 65%;
+}
+
+.painting-partition {
+    width: 100%;
+    background-color: grey;
+    margin: 15px 0;
+    color: white;
+    font-size: 1.25rem;
+    padding: 5px;
+}
+
+/* Payment */
+
+.payment-container .card-header {
+    background-color: #dc3545;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.payment-container .card-body {
+    padding-left: 3%;
+    position: relative;
+}
+
+.painting-wrapper {
+    width: 500px;
+    max-height: 350px;
+    overflow: hidden;
+    border: 10px solid white;
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 15%;
+    right: 5%;
+}
+
+.painting-wrapper img {
+    width: 500px;
+}
+
+.artist-wrapper {
+    position: absolute;
+    right: 8%;
+    top: 15%;
+    margin-top: -50px;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border: 5px solid white;
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.2);
+}
+
+.artist-wrapper img {
+    width: 100px;
+}
+
+/* painting page */
+
+.painting-photo {
+    border: 5px solid white;
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* current user */
+
+.deleteUserBtn {
+    position: fixed;
+    bottom: 5%;
+    right: 2%;
+}
+
+/* change profile picture */
+
+.current-pic {
+    /* position: absolute; */
+    /* right: 8%; */
+    /* top: 15%; */
+    /* margin-top: -50px; */
+    width: 500px;
+    max-height: 500px;
+    overflow: hidden;
+    border: 5px solid white;
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.2);
+}
+
+.current-pic img {
+    width: 500px;
+}
