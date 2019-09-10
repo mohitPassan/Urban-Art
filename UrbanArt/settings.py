@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': config('DB_NAME', 'urbanart'),
         'USER': config('DB_USER', 'urbanart'),
         'PASSWORD': config('DB_PASSWORD', 'urbanart'),
-        'HOST': config('DB_HOST', 'localhost)'
+        'HOST': config('DB_HOST', 'localhost')
     }
 }
 
