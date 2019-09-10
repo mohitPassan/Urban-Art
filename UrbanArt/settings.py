@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -84,11 +85,10 @@ WSGI_APPLICATION = 'UrbanArt.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'urbanart',
-        'USER': 'urbanart',
-        'PASSWORD': 'urbanart',
-        'HOST': 'localhost',
-        'PORT': ''
+        'NAME': config('DB_NAME', 'urbanart'),
+        'USER': config('DB_USER', 'urbanart'),
+        'PASSWORD': config('DB_PASSWORD', 'urbanart'),
+        'HOST': config('DB_HOST', 'localhost)'
     }
 }
 
@@ -133,6 +133,9 @@ STATIC_ROOT  =   os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 LOGIN_REDIRECT_URL = '/index/'
 LOGOUT_REDIRECT_URL = '/'
